@@ -11,7 +11,7 @@ If you ever decided to change the size, you wouldn't have to re-encode anything,
 
 	<img src="http://127.0.0.1:8080/convert?thumbnail=75x75&src=http://www.example.com/image.jpg">
 
-You can also perform transformations by making requests via curl or the programming language of your choice. Use its [identify](/docs#identify) method to identify the image format and metadata attributes associated with the image.
+You can also perform transformations by making requests via curl or the programming language of your choice. Use its `identify` method to identify the image format and metadata attributes associated with the image.
 
 As you can imagine you can pipline transfomations, and the API will sequence the transformation in the order you sepcify, as shown below:
 
@@ -52,8 +52,8 @@ This project was a quick prototype written in under a day for demostration purpo
 
 ### Current Features
 
-* [Describe the attributes of the image](/#identify)
-* [Resize, Flip, Rotate, Thumbnail the format of the image](/#convert)
+* Describe the attributes of the image
+* Resize, Flip, Rotate, Thumbnail the format of the image
 * ~~Access LOBCDER URIs. (Locally mounted WebDAV resources)~~
 
 The latest API base URL that implements these features is `http://127.0.0.1:8080/v1`
