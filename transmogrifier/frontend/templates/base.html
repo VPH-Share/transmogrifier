@@ -1,6 +1,6 @@
 {% set navigation_bar = [
-    ('/index.html', 'index', 'About'),
-    ('/docs.html', 'docs', 'API Docs'),
+    ('index.html', 'index', 'About'),
+    ('docs.html', 'docs', 'API Docs'),
     ('mailto://susheel.varma@sheffield.ac.uk', 'contact', 'Contact'),
     ('http://www.vph-share.eu', 'vphshare', 'VPH-Share')
 ] -%}
@@ -56,7 +56,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </a>
-            <a class="brand" href="/">{{ config['SITE_NAME'] }}</a>
+            <a class="brand" href="index.html">{{ config['SITE_NAME'] }}</a>
             <div class="nav-collapse">
               <ul class="nav">
                 {% macro doc_list(active) -%}
