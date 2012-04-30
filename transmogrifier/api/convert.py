@@ -72,6 +72,7 @@ def get_convert():
                     fret = fname.rsplit('.', 1)[0] + '.' + g.params['format']
                 else:
                     fret = fname
+                print fret
                 return send_file(fret)
 
 
@@ -140,8 +141,9 @@ def process_params():
                 elif v.upper() == 'V':
                     cmds.append('-flip')
                 elif v.upper() == '':
-                    pass
+                    del g.params[k]
                 else:
+                    del g.params[k]
                     err_msg = {"client_error": "'flip' param must be H or V.",
                                "more_info": "/#convert"}
                     return error_response(400, err_msg)
@@ -150,8 +152,9 @@ def process_params():
                     cmds.append('-format %s' % str(v))
                     g.format = v
                 elif str(v).lower() == '':
-                    pass
+                    del g.params[k]
                 else:
+                    del g.params[k]
                     err_msg = {"client_error": "Illegal 'format' type specified.",
                                "more_info": "/#convert"}
                     return error_response(400, err_msg)
@@ -160,8 +163,9 @@ def process_params():
                 if len(splits) == 2 and (splits[0].isdigit() and splits[1].isdigit()):
                     cmds.append('-resize %s' % str(v))
                 elif v == '':
-                    pass
+                    del g.params[k]
                 else:
+                    del g.params[k]
                     err_msg = {"client_error": "'resize' param must be of format WxH.",
                                "more_info": "/#convert"}
                     return error_response(400, err_msg)
@@ -169,8 +173,9 @@ def process_params():
                 if v.isdigit() or v.isnumeric():
                     cmds.append(' -rotate %s' % str(v))
                 elif v == '':
-                    pass
+                    del g.params[k]
                 else:
+                    del g.params[k]
                     err_msg = {"client_error": "'rotate' param must be a number.",
                                "more_info": "/#convert"}
                     return error_response(400, err_msg)
@@ -178,8 +183,9 @@ def process_params():
                 if len(v.split('x')) == 2:
                     cmds.append(' -thumbnail %s ' % str(v))
                 elif v == '':
-                    pass
+                    del g.params[k]
                 else:
+                    del g.params[k]
                     err_msg = {"client_error": "'thumbnail' param must be of format WxH.",
                                "more_info": "/#convert"}
                     return error_response(400, err_msg)

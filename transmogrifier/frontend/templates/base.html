@@ -1,7 +1,8 @@
 {% set navigation_bar = [
     ('/index.html', 'index', 'About'),
     ('/docs.html', 'docs', 'API Docs'),
-    ('mailto://susheel.varma@sheffield.ac.uk', 'contact', 'Contact')
+    ('mailto://susheel.varma@sheffield.ac.uk', 'contact', 'Contact'),
+    ('http://www.vph-share.eu', 'vphshare', 'VPH-Share')
 ] -%}
 {% set active_page = active_page|default('docs') -%}
 
@@ -21,7 +22,9 @@
 	<meta name="author" content="{{ config['SITE_AUTHOR'] }}">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
 	{% endblock %}
-	
+
+  <!-- <base href="/as_dev/thumbnail/"/> -->
+  <base href="/"/>
 	<link rel="shortcut icon" href="static/ico/favicon.ico">
 	<!-- <link rel="apple-touch-icon-precomposed" sizes="114x114" href="./static/ico/apple-touch-icon-114-precomposed.png">
 	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="./static/ico/apple-touch-icon-72-precomposed.png">
@@ -61,15 +64,15 @@
                 <li class="dropdown {{ active }}">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">API Docs <b class="caret"></b></a>
                   <ul class="dropdown-menu">
-                    <li><a name="getstarted" href="{{ config['CANONICAL_SERVER'] }}docs.html">Getting Started</a></li>
-                    <li><a name="request" href="{{ config['CANONICAL_SERVER'] }}docs#request">Basic Request</a></li>
-                    <li><a name="response" href="{{ config['CANONICAL_SERVER'] }}docs#response">Basic Response</a></li>
-                    <li><a name="security" href="{{ config['CANONICAL_SERVER'] }}docs#security">Security</a></li>
-                    <li><a name="errors" href="{{ config['CANONICAL_SERVER'] }}docs#error">Error Responses</a></li>
+                    <li><a name="getstarted" href="docs.html">Getting Started</a></li>
+                    <li><a name="request" href="docs.html#request">Basic Request</a></li>
+                    <li><a name="response" href="docs.html#response">Basic Response</a></li>
+                    <li><a name="security" href="docs.html#security">Security</a></li>
+                    <li><a name="errors" href="docs.html#error">Error Responses</a></li>
                     <li class="divider"></li>
                     <li class="nav-header">API</li>
-                    <li><a name="identify" href="{{ config['CANONICAL_SERVER'] }}docs#identify">Identify</a></li>
-                    <li><a name="convert" href="{{ config['CANONICAL_SERVER'] }}docs#convert">Convert</a></li>
+                    <li><a name="identify" href="docs.html#identify">Identify</a></li>
+                    <li><a name="convert" href="docs.html#convert">Convert</a></li>
                   </ul>
                 </li>
                 {%- endmacro %}
@@ -106,7 +109,7 @@
           <footer class="footer">
             {% block footer %}
             <p class="pull-right"><a href="#">Back to top</a></p>
-            <p>Designed and built with all the love in the world by <a href="http://www.susheelvarma.com/" target="_blank">@susheelvarma</a>.</p>
+            <p>Designed and built with all the love in the world by <a href="http://www.susheelvarma.com/" target="_blank">@susheelvarma</a> &amp; <a href="http://www.vph-share.eu">@VPH-Share</a>.</p>
             <p>Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License v2.0</a>.</p>
             {% endblock %}
           </footer>

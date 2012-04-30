@@ -22,7 +22,7 @@ serialise = {
     # }
 }
 
-ALLOWED_EXTENSIONS = set(['jpg', 'jpe', 'jpeg', 'png', 'svg', 'bmp', 'tif'])
+ALLOWED_EXTENSIONS = set(['jpg', 'jpe', 'jpeg', 'png'])
 
 
 def allowed_file(filename):

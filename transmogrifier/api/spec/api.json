@@ -22,7 +22,7 @@
 							"name" : "src",
 							"type" : "url",
 							"required" : true,
-							"description" : "The source url of the image to identify. Eg. lob://public/Lenna.png. Supports HTTP and LOB URLs to 'jpg', 'jpe', 'jpeg', 'png', 'svg', 'bmp', 'tif' filetypes."
+							"description" : "The source url of the image to identify. Eg. lob://public/Lenna.png. Supports HTTP and LOB URLs to 'jpg', 'jpe', 'jpeg', 'png' filetypes."
 						},
 						{
 							"name" : "format",
@@ -39,7 +39,7 @@
 							"name" : "file",
 							"type" : "url",
 							"required" : true,
-							"description" : "The image to be uploaded for identification. Supported filetypes - 'jpg', 'jpe', 'jpeg', 'png', 'svg', 'bmp', 'tif'."
+							"description" : "The image to be uploaded for identification. Supported filetypes - 'jpg', 'jpe', 'jpeg', 'png'."
 						},
 						{
 							"name" : "dest",
@@ -72,7 +72,7 @@
 							"name" : "src",
 							"type" : "url",
 							"required" : true,
-							"description" : "The source url of the image to convert. Eg. lob://public/Lenna.png. Supports HTTP and LOB URLs to 'jpg', 'jpe', 'jpeg', 'png', 'svg', 'bmp', 'tif' filetypes."
+							"description" : "The source url of the image to convert. Eg. lob://public/Lenna.png. Supports HTTP and LOB URLs to 'jpg', 'jpe', 'jpeg', 'png' filetypes."
 						},
 						{
 							"name" : "flip",
@@ -82,7 +82,7 @@
 						{
 							"name" : "format",
 							"type" : "string",
-							"description" : "Converts image into specified format. Supports jpg, tif, png."
+							"description" : "Converts image into specified format. Supports 'jpg', 'jpe', 'jpeg', 'png'."
 						},
 						{
 							"name" : "resize",
@@ -104,7 +104,7 @@
 							"name" : "file",
 							"type" : "file",
 							"required" : true,
-							"description" : "The image to be uploaded for convertion. Supported filetypes - 'jpg', 'jpe', 'jpeg', 'png', 'svg', 'bmp', 'tif'."
+							"description" : "The image to be uploaded for convertion. Supported filetypes - 'jpg', 'jpe', 'jpeg', 'png'."
 						},
 						{
 							"name" : "dest",
@@ -120,7 +120,7 @@
 						{
 							"name" : "format",
 							"type" : "string",
-							"description" : "Converts image into specified format. Supports jpg, tif, png."
+							"description" : "Converts image into specified format. Supports 'jpg', 'jpe', 'jpeg', 'png'."
 						},
 						{
 							"name" : "resize",

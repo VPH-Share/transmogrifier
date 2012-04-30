@@ -1,3 +1,3 @@
 #!/bin/sh
 
-rm -rf /var/vphapp/tmp/*
+sudo rm -rf /var/vphapp/tmp/*

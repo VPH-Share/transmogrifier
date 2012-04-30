@@ -20,7 +20,7 @@ BLUEPRINTS = [api_error, docs, api_identify, api_convert]
 def create_app(name=SITE_NAME, config=DefaultConfig, blueprints=BLUEPRINTS):
     '''Application Factory that returns a pre-configured Flask app'''
 
-    app = Flask(name, static_path="/%(SITE_NAME)s/frontend/static")
+    app = Flask(name, static_url_path="/%(SITE_NAME)s/frontend/static")
 
     # Load settings
     configure_app(app, config)

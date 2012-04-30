@@ -40,7 +40,7 @@
       <p><span class="badge badge-error">Danger, Will Robinson. Danger!</span></p>
       <p style="color: #B94A48;"><strong>This service does not implement any form of security whatsoever. It can access all files on the LOBCDER storage platform, without discrimination. Use at your own peril.</strong></p>
       <p><a class="btn-mini btn-success" style="text-decoration: none;">POST</a> methods, for this reason have been purposly disabled to ensure you do not do anything stupid.</p>
-      <p>Due to to very natuure of this webservice, this API does not protect you from <a href="http://en.wikipedia.org/wiki/Cross-site_request_forgery">Cross-Site Requst Forgeries</a>. If you plan to deploy this with a private please use the <code>@crossdomain</code> decorator.</p>
+      <p>Due to to very natuure of this webservice, this API does not protect you from <a href="http://en.wikipedia.org/wiki/Cross-site_request_forgery">Cross-Site Requst Forgeries</a>. If you plan to deploy this on a private domain please use the <code>@crossdomain</code> decorator.</p>
       <p>If you plan to deploy this in production, set <code>USE_SSL = True</code> and place it behind an Apache/nginx root server.</p>
       <p>Later versions of this service will handle, at the very least <a href=" HTTP Basic-Auth">HTTP Basic-Auth</a> or <a href="http://en.wikipedia.org/wiki/Digest_access_authentication">HTTP Digest-Auth</a> for LOBCDER access using credential delegation.</p>
     </section>
@@ -57,12 +57,12 @@
       </ul>
       <p>By default the API returns a json wrapped standard HTTP error:</p>
       <ul>
-        <li><a href="{{ config['CANONICAL_SERVER'] }}error/400">400</a> : Bad Request - The request to the API you are trying to access was malformed. See response body for details</li>
-        <li><a href="{{ config['CANONICAL_SERVER'] }}error/404">404</a> : Not Found - API endpoint or resource you are attempting to access does not exist</li>
-        <li><a href="{{ config['CANONICAL_SERVER'] }}error/418">418</a> : I'm a Teapot - Earl Grey and a wedge of Lemon, Please</li>
-        <li><a href="{{ config['CANONICAL_SERVER'] }}error/500">500</a> : Internal Server Error - Request was recieved, but a server error occurred. Se response body for details</li>
+        <li><a href="error/400">400</a> : Bad Request - The request to the API you are trying to access was malformed. See response body for details</li>
+        <li><a href="error/404">404</a> : Not Found - API endpoint or resource you are attempting to access does not exist</li>
+        <li><a href="error/418">418</a> : I'm a Teapot - Earl Grey and a wedge of Lemon, Please</li>
+        <li><a href="error/500">500</a> : Internal Server Error - Request was recieved, but a server error occurred. Se response body for details</li>
       </ul>
-      <p>For legacy clients that often handle HTTP errors incorrectly, you may use <code>surpress_error=True</code> parameter to wrap the error in a <a href="{{ config['CANONICAL_SERVER'] }}error/200">200</a> - OK HTTP status.</p>
+      <p>For legacy clients that often handle HTTP errors incorrectly, you may use <code>surpress_error=True</code> parameter to wrap the error in a <a href="error/200">200</a> - OK HTTP status.</p>
     </section>
   </div>
 </div>
@@ -70,7 +70,7 @@
 <div class="row" style="text-align: center;">
   <div class="span10">
     <div class="alert alert-block">
-      <h3 class="alert-heading">The Latest API Base URL - <a href="{{ config['CANONICAL_SERVER'] }}v1?_method=OPTIONS" target="_blank">{{ config['CANONICAL_SERVER'] }}v1</a></h3>
+      <h3 class="alert-heading">The Latest API Base URL - <a href="v1?_method=OPTIONS" target="_blank">{{ config['CANONICAL_SERVER'] }}v1</a></h3>
     </div>
   </div>
 </div>
@@ -97,7 +97,7 @@
               <div>This method allows the client to determine the options and/or requirements associated with the 'identify' resource, without implying a resource action or initiating a resource retrieval. It returns a json response by default. Hopefully we will migrate this to a more RESTful standard like WADL.
               </div>
               <br/>
-              <p class="pull-right"><a class="btn btn-inverse" href="{{ config['CANONICAL_SERVER'] }}v1/identify?_method=OPTIONS" target="_blank">OPTIONS</a></p>
+              <p class="pull-right"><a class="btn btn-inverse" href="v1/identify?_method=OPTIONS" target="_blank">OPTIONS</a></p>
               <p>cURL Example: <code>curl -X OPTIONS {{ config['CANONICAL_SERVER'] }}v1/identify</code></p>
             </div>
           </div>
@@ -114,7 +114,7 @@
           </div>
           <div id="getIdentify" class="accordion-body collapse">
             <div class="accordion-inner" style="background-color: #E7F0F7;">
-              <form class="form-horizontal" id="frmGetIdentify" action="{{ config['CANONICAL_SERVER'] }}v1/identify" method="get" target="_blank" enctype="multipart/form-data" style="background-color: #E7F0F7; vertical-align: middle;">
+              <form class="form-horizontal" id="frmGetIdentify" action="v1/identify" method="get" target="_blank" enctype="multipart/form-data" style="background-color: #E7F0F7; vertical-align: middle;">
                 <table class="table table-condensed">
                   <thead>
                       <tr>
@@ -132,7 +132,7 @@
                       <tr>
                         <td style="vertical-align:middle;">src</td>
                         <td style="vertical-align:middle;"><input id="src" name="src" type="text" class="span3" placeholder="source url"></td>
-                        <td style="vertical-align:middle;"><span class="badge badge-error">Required</span> The source url of the image to identify. Eg. <code>{{ config['LOBCDER_DAV_ROOT'] }}Lenna.png</code>. Supports HTTP and LOB URLs to 'jpg', 'jpe', 'jpeg', 'png',  'svg', 'bmp', 'tif' filetypes.</td>
+                        <td style="vertical-align:middle;"><span class="badge badge-error">Required</span> The source url of the image to identify. Eg. <code>{{ config['LOBCDER_DAV_ROOT'] }}Lenna.png</code>. Supports HTTP and LOB URLs to 'jpg', 'jpe', 'jpeg', 'png' filetypes.</td>
                       </tr>
                     </tbody>
                 </table>
@@ -172,7 +172,7 @@
                       <tr>
                         <td style="vertical-align:middle;">file</td>
                         <td style="vertical-align:middle;"><input id="file" type="file" class="span3 disabled" disabled="disabled"></td>
-                        <td style="vertical-align:middle;"><span class="badge badge-error">Required</span> The image to be uploaded for identification. Supported filetypes - 'jpg', 'jpe', 'jpeg', 'png',  'svg', 'bmp', 'tif'.</td>
+                        <td style="vertical-align:middle;"><span class="badge badge-error">Required</span> The image to be uploaded for identification. Supported filetypes - 'jpg', 'jpe', 'jpeg', 'png'.</td>
                       </tr>
                       <tr>
                         <td style="vertical-align:middle;">dest</td>
@@ -213,7 +213,7 @@
               <div>This method allows the client to determine the options and/or requirements associated with the 'convert' resource, without implying a resource action or initiating a resource retrieval. It returns a json response by default. Hopefully we will migrate this to a more RESTful standard like WADL.
               </div>
               <br/>
-              <p class="pull-right"><a class="btn btn-inverse" href="{{ config['CANONICAL_SERVER'] }}v1/convert?_method=OPTIONS" target="_blank">OPTIONS</a></p>
+              <p class="pull-right"><a class="btn btn-inverse" href="v1/convert?_method=OPTIONS" target="_blank">OPTIONS</a></p>
             <p>cURL Example: <code>curl -X OPTIONS {{ config['CANONICAL_SERVER'] }}v1/convert</code></p>
             </div>
           </div>
@@ -230,7 +230,7 @@
           </div>
           <div id="getConvert" class="accordion-body collapse">
             <div class="accordion-inner" style="background-color: #E7F0F7;">
-              <form class="form-horizontal" id="frmGetConvert" action="{{ config['CANONICAL_SERVER'] }}v1/convert" method="get" target="_blank" enctype="multipart/form-data" style="background-color: #E7F0F7; vertical-align: middle;">
+              <form class="form-horizontal" id="frmGetConvert" action="v1/convert" method="get" target="_blank" enctype="multipart/form-data" style="background-color: #E7F0F7; vertical-align: middle;">
                 <table class="table table-condensed">
                   <thead>
                       <tr>
@@ -263,7 +263,7 @@
                       <tr>
                         <td style="vertical-align:middle;">src</td>
                         <td style="vertical-align:middle;"><input id="src" name="src" type="text" class="span3" placeholder="source url"></td>
-                        <td style="vertical-align:middle;"><span class="badge badge-error">Required</span> The source url of the image to convert. Eg. <code>{{ config['LOBCDER_DAV_ROOT'] }}Lenna.png</code>. Supports HTTP and LOB URLs to 'jpg', 'jpe', 'jpeg', 'png',  'svg', 'bmp', 'tif' filetypes.</td>
+                        <td style="vertical-align:middle;"><span class="badge badge-error">Required</span> The source url of the image to convert. Eg. <code>{{ config['LOBCDER_DAV_ROOT'] }}Lenna.png</code>. Supports HTTP and LOB URLs to 'jpg', 'jpe', 'jpeg', 'png' filetypes.</td>
                       </tr>
                     </tbody>
                 </table>
@@ -318,7 +318,7 @@
                       <tr>
                         <td style="vertical-align:middle;">file</td>
                         <td style="vertical-align:middle;"><input id="file" name="file" type="file" class="span3 disabled" disabled="disabled"></td>
-                        <td style="vertical-align:middle;"><span class="badge badge-error">Required</span> The image to be uploaded for convertion. Supported filetypes - 'jpg', 'jpe', 'jpeg', 'png',  'svg', 'bmp', 'tif'</td>
+                        <td style="vertical-align:middle;"><span class="badge badge-error">Required</span> The image to be uploaded for convertion. Supported filetypes - 'jpg', 'jpe', 'jpeg', 'png'</td>
                       </tr>
                       <tr>
                         <td style="vertical-align:middle;">dest</td>
