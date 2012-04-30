@@ -22,7 +22,7 @@ class BaseConfig(object):
     # value contained in Host headers (e.g. 'www.example.org' and 80)
     # CANONICAL_NAME = '127.0.0.1'
     # CANONICAL_PORT = 8080
-    # CANONICAL_SERVER = CANONICAL_NAME+':'+str(CANONICAL_PORT)
+    CANONICAL_SERVER = 'http://vph.cyfronet.pl:8000/as_dev/thumbnail/'
 
     SECRET_KEY = 'secret'
     MAX_CONTENT_LENGTH = 12 * 1024 * 1024  # 12Mb upload limit

@@ -1,8 +1,7 @@
 # www.robotstxt.org/
 # http://code.google.com/web/controlcrawlindex/
 
-# Sitemap: {{ request.url_root }}
-
+# Sitemap: /
 User-Agent: *
 
 Disallow: /harming/humans

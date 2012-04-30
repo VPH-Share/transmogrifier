@@ -10,16 +10,16 @@
     <div class="span2"><h3>What?</h3></div>
     <div class="span8">Transmogrifier is a <a href="http://en.wikipedia.org/wiki/Representational_state_transfer">RESTful</a> image manipulation webservice wrapper around <a href="http://www.graphicsmagick.org/">GraphicsMagick</a> which is the swiss army knife of image processing. There are many possible uses for this, but one major use is to resize images on-the-fly directly from HTML code, rather than processing the image when it is first uploaded or created. For example, if a user uploads a file to LOBCDER and it gets stored in <code>lob://image.jpg</code> or is stored externally, you could show a thumbnailed 50x50 px version like this:
       <p>
-        <pre class="prettyprint">&lt;img src="{{ request.url_root }}convert?thumbnail=50x50&src=lob://image.jpg"&gt;</pre>
+        <pre class="prettyprint">&lt;img src="{{ config['CANONICAL_SERVER'] }}/v1/convert?thumbnail=50x50&src=lob://image.jpg"&gt;</pre>
       </p>
       <p>If you ever decided to change the size, you wouldn't have to re-encode anything, just change the HTML:</p>
       <p>
-        <pre class="prettyprint lang-html">&lt;img src="{{ request.url_root }}convert?thumbnail=75x75&src=http://www.example.com/image.jpg"&gt;</pre>
+        <pre class="prettyprint lang-html">&lt;img src="{{ config['CANONICAL_SERVER'] }}v1/convert?thumbnail=75x75&src=http://www.example.com/image.jpg"&gt;</pre>
       </p>
       <p>You can also perform transformations by making requests via curl or the programming language of your choice. Use its <a href="/docs#identify">identify</a> method to identify the image format and metadata attributes associated with the image.</p>
       <p>As you can imagine you can pipline transfomations, and the API will sequence the transformation in the order you sepcify, as shown below:</p>
       <p>
-        <pre class="prettyprint lang-html">&lt;img src="{{ request.url_root }}convert?flip=V&thumbnail=75x75&src=http://www.example.com/image.jpg"&gt;</pre>
+        <pre class="prettyprint lang-html">&lt;img src="{{ config['CANONICAL_SERVER'] }}convert?flip=V&thumbnail=75x75&src=http://www.example.com/image.jpg"&gt;</pre>
       </p>
       <p>Without sounding too pretentious, I have used this simple project to consolidate the many RESTful best practices I have known about, to help developers write good and more importantly usable web services.</p>
       </p>
@@ -67,7 +67,7 @@
           <li>Access LOBCDER URIs. (Locally mounted WebDAV resources)</li>
         </ul>
       </p>
-      <p>The latest API base URL that implements these features is <code>{{ request.url_root }}v1</code></p>
+      <p>The latest API base URL that implements these features is <code>{{ config['CANONICAL_SERVER'] }}v1</code></p>
       <p><h4>Future Features</h4></p>
       <p>
         <ul>
