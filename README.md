@@ -1,5 +1,6 @@
 # transmogrifier
 
+	curl https://github.com/VPH-Share/transmogrifier/raw/master/bootstrap.lucid64.sh | sh
 ## What?
 
 **Transmogrifier** is a [RESTful](http://en.wikipedia.org/wiki/Representational_state_transfer) *image manipulation webservice* wrapper around [GraphicsMagick](http://www.graphicsmagick.org/) which is the swiss army knife of image processing. There are many possible uses for this, but one major use is to resize images on-the-fly directly from HTML code, rather than processing the image when it is first uploaded or created. For example, if a user uploads a file to LOBCDER and it gets stored in `lob://image.jpg` or is stored externally, you could show a thumbnailed 50x50 px version like this:
