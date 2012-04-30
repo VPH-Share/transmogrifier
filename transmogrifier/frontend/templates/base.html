@@ -1,0 +1,144 @@
+{% set navigation_bar = [
+    ('/index.html', 'index', 'About'),
+    ('/docs.html', 'docs', 'API Docs'),
+    ('mailto://susheel.varma@sheffield.ac.uk', 'contact', 'Contact')
+] -%}
+{% set active_page = active_page|default('docs') -%}
+
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<title>{% block title %}{{ config['SITE_NAME'] }}{% endblock %}</title>
+	{% block metatags %}
+	<meta name="description" content="{{ config['SITE_DESCRIPTION'] }}">
+	<meta name="keywords" content="{{ config['SITE_KEYWORDS'] }}">
+	<meta name="author" content="{{ config['SITE_AUTHOR'] }}">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+	{% endblock %}
+	
+	<link rel="shortcut icon" href="static/ico/favicon.ico">
+	<!-- <link rel="apple-touch-icon-precomposed" sizes="114x114" href="./static/ico/apple-touch-icon-114-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="./static/ico/apple-touch-icon-72-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" href="./static/ico/apple-touch-icon-57-precomposed.png"> -->
+	{% block css %}
+	<link rel="stylesheet" href="static/css/bootstrap.min.css">
+	<style>
+	body {
+	  padding-top: 60px;
+	  padding-bottom: 40px;
+	}
+	</style>
+	<link rel="stylesheet" href="static/css/bootstrap-responsive.min.css">
+	<link rel="stylesheet" href="static/extras/prettify/prettify.css" rel="stylesheet">
+	<link rel="stylesheet" href="static/extras/font-awesome/css/font-awesome.css" rel="stylesheet">
+  <!-- Custom User Styles -->
+	<link rel="stylesheet" href="static/css/style.css">
+	{% endblock %}
+
+	<script src="static/js/libs/modernizr-2.5.3-respond-1.1.0.min.js"></script>
+</head>
+<body>
+<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <a href="http://github.com/VPH-Share/transmogrifier"><img style="position: absolute; top: 0; right: 0; border: 0;" src="static/img/ghribbon-red-right.png" alt="Fork me on GitHub"></a>
+        <div class="container">
+          <div class="span12">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </a>
+            <a class="brand" href="/">{{ config['SITE_NAME'] }}</a>
+            <div class="nav-collapse">
+              <ul class="nav">
+                {% macro doc_list(active) -%}
+                <li class="dropdown {{ active }}">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">API Docs <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a name="getstarted" href="/docs.html">Getting Started</a></li>
+                    <li><a name="request" href="/docs#request">Basic Request</a></li>
+                    <li><a name="response" href="/docs#response">Basic Response</a></li>
+                    <li><a name="security" href="/docs#security">Security</a></li>
+                    <li><a name="errors" href="/docs#error">Error Responses</a></li>
+                    <li class="divider"></li>
+                    <li class="nav-header">API</li>
+                    <li><a name="identify" href="/docs#identify">Identify</a></li>
+                    <li><a name="convert" href="/docs#convert">Convert</a></li>
+                  </ul>
+                </li>
+                {%- endmacro %}
+                {% for href, id, caption in navigation_bar %}
+                {% if id == active_page %}
+                  {% if id == 'docs' %}
+                    {{ doc_list('active') }}
+                  {% else %}
+                    <li{% if id == active_page %} class="active"{% endif %}><a href="{{ href }}">{{ caption }}</a></li>
+                  {% endif %}
+                {% else %}
+                  {% if id == 'docs' %}
+                    {{ doc_list('') }}
+                  {% else %}
+                    <li{% if id == active_page %} class="active"{% endif %}><a href="{{ href }}">{{ caption }}</a></li>
+                  {% endif %}
+                {% endif %}
+                {% endfor %}
+              </ul>
+            </div><!--/.nav-collapse -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="span10 offset1">
+          <header>
+            {% block header %}{% endblock %}
+          </header>
+          {% block content %}{% endblock %}
+          <hr>
+          <footer class="footer">
+            {% block footer %}
+            <p class="pull-right"><a href="#">Back to top</a></p>
+            <p>Designed and built with all the love in the world by <a href="http://www.susheelvarma.com/" target="_blank">@susheelvarma</a>.</p>
+            <p>Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License v2.0</a>.</p>
+            {% endblock %}
+          </footer>
+        </div>
+      </div>
+    </div>
+    
+    {% block javascript %}
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="static/js/libs/jquery-1.7.2.min.js"><\/script>')</script>
+    <script src="static/js/libs/bootstrap/bootstrap.min.js"></script>
+    <script type="text/javascript" src="static/extras/prettify/prettify.js"></script>
+    <script>
+    $(document).ready(function() {
+    	/* Google Prettyprint */
+    	prettyPrint();
+
+      // bind 'myForm' and provide a simple callback function 
+      $('#myForm').ajaxForm(function() { 
+          alert("Thank you for your comment!"); 
+      }); 
+    });
+    </script>
+    <script src="static/js/plugins.js"></script>
+    <!-- Custom User Scripts -->
+    <script src="static/js/script.js"></script>
+    {% endblock %}
+    <!-- <script>
+    // window._gaq = [['_setAccount','{{ config['GANALYTICS'] }}'],['_trackPageview'],['_trackPageLoadTime']];
+    // Modernizr.load({
+    //   load: ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js'
+    // });
+    </script> -->
+</body>
+</html>

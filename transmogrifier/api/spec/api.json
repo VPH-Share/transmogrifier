@@ -1,0 +1,140 @@
+{
+	"author" : ["Susheel Varma <susheel.varma@sheffield.ac.uk>"],
+	"affiliation" : "The University of Sheffield UK",
+	"license" : "Apache License 2.0",
+	"lastUpdate" : "2012-04-26",
+	"description" : "Transforms an image to an output image whilst applying the specified transforms.",
+	"version" : "v1",
+	"methods" : [
+		{
+			"path" : "/identify.{format}",
+			"version" : "v1",
+			"operations" : [
+				{
+					"httpMethod" : "OPTIONS",
+					"description" : "Returns the 'identify' api specification"
+				},
+				{
+					"httpMethod" : "GET",
+					"description" : "Returns attributes of external source image",
+					"parameters" : [
+						{
+							"name" : "src",
+							"type" : "url",
+							"required" : true,
+							"description" : "The source url of the image to identify. Eg. lob://public/Lenna.png. Supports HTTP and LOB URLs to 'jpg', 'jpe', 'jpeg', 'png', 'svg', 'bmp', 'tif' filetypes."
+						},
+						{
+							"name" : "format",
+							"type" : "string",
+							"description" : "Specify the format of the response. Supports an xml or json metadata response. Default: json."
+						}
+					]
+				},
+				{
+					"httpMethod" : "POST",
+					"description" : "Returns attributes of an uploaded image",
+					"parameters" : [
+						{
+							"name" : "file",
+							"type" : "url",
+							"required" : true,
+							"description" : "The image to be uploaded for identification. Supported filetypes - 'jpg', 'jpe', 'jpeg', 'png', 'svg', 'bmp', 'tif'."
+						},
+						{
+							"name" : "dest",
+							"type" : "url",
+							"required" : false,
+							"description" : "LOBCDER destination path. Eg. lob://public/Lenna.png. Note: Using this parameter breaks the RESTful idempotent nature of this method as it returns the attributes of a POSTed file. Ideally you would perform the same operation using a seperate POST to upload the file and then GET the file back."
+						},
+						{
+							"name" : "format",
+							"type" : "string",
+							"description" : "Specify the format of the response. Supports an xml or json metadata response. Default: json."
+						}
+					]
+				}
+			]
+		},
+		{
+			"path" : "/convert",
+			"version" : "v1",
+			"operations" : [
+				{
+					"httpMethod" : "OPTIONS",
+					"description" : "Returns the 'convert' api specification"
+				},
+				{
+					"httpMethod" : "GET",
+					"description" : "Returns a transformed external source image",
+					"parameters" : [
+						{
+							"name" : "src",
+							"type" : "url",
+							"required" : true,
+							"description" : "The source url of the image to convert. Eg. lob://public/Lenna.png. Supports HTTP and LOB URLs to 'jpg', 'jpe', 'jpeg', 'png', 'svg', 'bmp', 'tif' filetypes."
+						},
+						{
+							"name" : "flip",
+							"type" : "string",
+							"description" : "Applies a mirror transform along the vertical or horizontal direction. Supports 'V'(vertical) or 'H'(horizontal)."
+						},
+						{
+							"name" : "format",
+							"type" : "string",
+							"description" : "Converts image into specified format. Supports jpg, tif, png."
+						},
+						{
+							"name" : "resize",
+							"type" : "string",
+							"description" : "Resizes the image specified in 'WxH' format. where W and H are pixel dimensions and are separated by an 'x' (e.g., '75x200')"
+						},
+						{
+							"name" : "rotate",
+							"type" : "string",
+							"description" : "Rotates the image specified in 'D' format, where D is between -360.0 and 360.0 except 0."
+						}
+					]
+				},
+				{
+					"httpMethod" : "POST",
+					"description" : "Returns attributes of an uploaded image",
+					"parameters" : [
+						{
+							"name" : "file",
+							"type" : "file",
+							"required" : true,
+							"description" : "The image to be uploaded for convertion. Supported filetypes - 'jpg', 'jpe', 'jpeg', 'png', 'svg', 'bmp', 'tif'."
+						},
+						{
+							"name" : "dest",
+							"type" : "url",
+							"required" : false,
+							"description" : "LOBCDER destination path. Eg. lob://public/Lenna.png."
+						},
+						{
+							"name" : "flip",
+							"type" : "string",
+							"description" : "Applies a mirror transform along the vertical or horizontal direction. Supports 'V'(vertical) or 'H'(horizontal)."
+						},
+						{
+							"name" : "format",
+							"type" : "string",
+							"description" : "Converts image into specified format. Supports jpg, tif, png."
+						},
+						{
+							"name" : "resize",
+							"type" : "string",
+							"description" : "Resizes the image specified in 'WxH' format. where W and H are pixel dimensions and are separated by an 'x' (e.g., '75x200')"
+						},
+						{
+							"name" : "rotate",
+							"type" : "string",
+							"description" : "Rotates the image specified in 'D' format, where D is between -360.0 and 360.0 except 0."
+						}
+					]
+				}
+			]
+		}
+	]	
+}

@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% set active_page = "index" %}
+
+{% block content %}
+<section id="introduction">
+  <div class="page-header">
+    <h2>Introduction <small>What? Why? How?</small></h2>
+  </div>
+  <div class="row">
+    <div class="span2"><h3>What?</h3></div>
+    <div class="span8">Transmogrifier is a <a href="http://en.wikipedia.org/wiki/Representational_state_transfer">RESTful</a> image manipulation webservice wrapper around <a href="http://www.graphicsmagick.org/">GraphicsMagick</a> which is the swiss army knife of image processing. There are many possible uses for this, but one major use is to resize images on-the-fly directly from HTML code, rather than processing the image when it is first uploaded or created. For example, if a user uploads a file to LOBCDER and it gets stored in <code>lob://image.jpg</code> or is stored externally, you could show a thumbnailed 50x50 px version like this:
+      <p>
+        <pre class="prettyprint">&lt;img src="{{ request.url_root }}convert?thumbnail=50x50&src=lob://image.jpg"&gt;</pre>
+      </p>
+      <p>If you ever decided to change the size, you wouldn't have to re-encode anything, just change the HTML:</p>
+      <p>
+        <pre class="prettyprint lang-html">&lt;img src="{{ request.url_root }}convert?thumbnail=75x75&src=http://www.example.com/image.jpg"&gt;</pre>
+      </p>
+      <p>You can also perform transformations by making requests via curl or the programming language of your choice. Use its <a href="/docs#identify">identify</a> method to identify the image format and metadata attributes associated with the image.</p>
+      <p>As you can imagine you can pipline transfomations, and the API will sequence the transformation in the order you sepcify, as shown below:</p>
+      <p>
+        <pre class="prettyprint lang-html">&lt;img src="{{ request.url_root }}convert?flip=V&thumbnail=75x75&src=http://www.example.com/image.jpg"&gt;</pre>
+      </p>
+      <p>Without sounding too pretentious, I have used this simple project to consolidate the many RESTful best practices I have known about, to help developers write good and more importantly usable web services.</p>
+      </p>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="span2"><h3>Why?</h3></div>
+    <div class="span2">
+      <a class="thumbnail">
+        <img src="static/img/transmogrifier.png" alt="">
+      </a>
+    </div>
+    <div class="span6">
+      <blockquote>
+        <p>[Because] it's amazing what they can do with corrugated cardboards these days...Oh the horrors we visit upon ourselves in the name of science.</p>
+        <small>Hobbes</small>
+      </blockquote>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="span2"><h3>How?</h3></div>
+    <div class="span8">
+      Transmogrifier uses a large amount of open-source tools, and wouldn't be possible without them.
+      <dl>
+        <dt>Standards</dt>
+        <dd><a href="http://www.html5rocks.com/en/">HTML5</a>, <a href="http://www.css3.info/">CSS3</a>.</dd>
+        <dt>Front-End</dt>
+        <dd><a href="http://html5boilerplate.com/">HTML5 Boilerplate</a>, <a href="http://twitter.github.com/bootstrap/">Bootstrap</a>, <a href="http://jquery.com/">jQuery</a>, <a href="http://modernizr.com/">Modernizr</a>.</dd>
+        <dt>Back-End</dt>
+        <dd><a href="http://flask.pocoo.org/">Flask</a>, <a href="http://gunicorn.org/">Gunicorn</a>, <a href="http://www.gevent.org/">Gevent</a>, <a href="http://www.graphicsmagick.org/">GraphicsMagick</a>.</dd>
+      </dl>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="span2"><h3>Status</h3></div>
+    <div class="span8">This project was a quick prototype written in under a day for demostration purposes, so is in no way complete. There are definitely some improvements that need to be made. Suggestions and pull requests are welcome.
+      <p><h4>Current Features</h4></p>
+      <p>
+        <ul>
+          <li><a href="/#identify">Describe the attributes of the image</a></li>
+          <li><a href="/#convert">Resize, Flip, Rotate, Thumbnail the format of the image</a></li>
+          <li>Access LOBCDER URIs. (Locally mounted WebDAV resources)</li>
+        </ul>
+      </p>
+      <p>The latest API base URL that implements these features is <code>{{ request.url_root }}v1</code></p>
+      <p><h4>Future Features</h4></p>
+      <p>
+        <ul>
+          <li><a href="http://www.graphicsmagick.org/composite.html">Composite images together</a></li>
+          <li><a href="http://www.graphicsmagick.org/compare.html">Compare two images using statistics and/or visual differencing</a></li>
+          <li>Support BATCH API calls</li>
+          <li>Use <a href="http://wiki.nginx.org/XSendfile">X-Sendfile / X-Accel-Redirect</a> Headers</li>
+          <li>Support at least <a href="http://en.wikipedia.org/wiki/Basic_access_authentication">HTTP Basic-Auth</a> or <a href="http://en.wikipedia.org/wiki/Digest_access_authentication">HTTP Digest Auth</a></li>
+          <li>Got SOAP? It's OK, I don't like you either! :)</li>
+          <li>Generate documentation from API specification</li>
+          <li><del>Basic</del> More Advanced error handling</li>
+          <li>Lots and lots of refactoring</li>
+          <li>Basic <a href="https://www.google.co.uk/search?q=spel-cheking">spel-cheking</a> :) Note to self: Hire a copy editor or Mom.</li>
+          <li>Minimise API documentation html, img, jss, css</li>
+        </ul>
+      </p>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="span2"><h3>Performance</h3></div>
+    <div class="span8">
+      Transmogrifier is by no means performant. It is written in Python and shells out to GraphicsMagick for its magic. It could be written in C as an Apache/Nginx module, but I don't have the time nor the inclination to do so.</p>
+      <p>Moreover it does not perform any form of caching, which IMHO is better left to CDN's like <a href="http://www.akamai.com/">Akamai</a> or <a href="https://aws.amazon.com/cloudfront/">CloudFront</a> or to caching proxies such as <a href="https://www.varnish-cache.org/">Varnish</a> or <a href="http://www.squid-cache.org/">Squid</a>.</p>
+    </div>
+  </div>
+</section>
+{% endblock %}

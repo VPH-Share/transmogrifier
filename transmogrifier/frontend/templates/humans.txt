@@ -1,0 +1,15 @@
+/* the humans responsible & colophon */
+/* humanstxt.org */
+
+/* TEAM */
+    Title:      {{ config['SITE_TITLE'] }}
+    Description:{{ config['SITE_DESCRIPTION'] }}
+    Keywords:   {{ config['SITE_KEYWORDS'] }}
+    Author:     {{ config['SITE_AUTHOR'] }}
+
+/* SITE */
+    Standards:   HTML5, CSS3
+    Front-end:   HTML5 Boilerplate, Bootstrap, jQuery, Modernizr
+    Back-end:    Flask, Gunicorn, Gevent, GraphicsMagick
+    Last Update: 
+    Language:
