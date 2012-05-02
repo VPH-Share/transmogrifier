@@ -23,6 +23,7 @@ class BaseConfig(object):
     # CANONICAL_NAME = '127.0.0.1'
     # CANONICAL_PORT = 8080
     CANONICAL_SERVER = 'http://vph.cyfronet.pl:8000/as_dev/thumbnail/'
+    SERVER_NAME = 'http://vph.cyfronet.pl:8000/as_dev/thumbnail/'
 
     SECRET_KEY = 'secret'
     MAX_CONTENT_LENGTH = 12 * 1024 * 1024  # 12Mb upload limit
@@ -35,7 +36,7 @@ class DefaultConfig(BaseConfig):
     UPLOAD_FOLDER = '/var/vphapp/tmp'
     # LOBCDER configuration
     LOBCDER_DAV_ROOT = 'lob://'
-    LOBCDER_FOLDER = '/media/lobcder/public'
+    LOBCDER_FOLDER = '/media/lobcder'
 
     ACCEPT_LANGUAGES = ['en']
     BABEL_DEFAULT_LOCALE = 'en'
@@ -54,10 +55,10 @@ class TestConfig(DevConfig):
 
 class ProdConfig(DefaultConfig):
     LISTEN_HOST = os.environ.get('HOST', '0.0.0.0')
-    LISTEN_PORT = os.environ.get('PORT', 80)
+    LISTEN_PORT = os.environ.get('PORT', 5000)
 
     # Logging
-    DEBUG_LOG = '/var/log/' + SITE_NAME.replace(' ', '_') + '/debug.log'
+    DEBUG_LOG = '/var/vphapp/logs/' + SITE_NAME.replace(' ', '_') + '/debug.log'
     MAIL_SERVER = os.environ.get('MAIL_SERVER', 'smtp.example.com')
     MAIL_USERNAME = os.environ.get('MAIL_USERNAME', 'joebloggs')
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD', 'j0e8l0gg5')

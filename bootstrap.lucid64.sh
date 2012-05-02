@@ -3,7 +3,7 @@
 export VPHAPP_ROOT='/var/vphapp'
 export VPHAPP_TMP=$VPHAPP_ROOT/tmp
 sudo mkdir -p $VPHAPP_ROOT/{logs,tmp} && cd $VPHAPP_ROOT
-sudo chmod 777 $VPHAPP_ROOT/{logs,tmp}
+sudo chmod 766 $VPHAPP_ROOT/{logs,tmp}
 
 # Update package repositories
 sudo apt-get update

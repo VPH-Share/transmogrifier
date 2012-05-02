@@ -13,34 +13,34 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 
 	<title>{% block title %}{{ config['SITE_NAME'] }}{% endblock %}</title>
 	{% block metatags %}
-	<meta name="description" content="{{ config['SITE_DESCRIPTION'] }}">
-	<meta name="keywords" content="{{ config['SITE_KEYWORDS'] }}">
-	<meta name="author" content="{{ config['SITE_AUTHOR'] }}">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+	<meta name="description" content="{{ config['SITE_DESCRIPTION'] }}"/>
+	<meta name="keywords" content="{{ config['SITE_KEYWORDS'] }}"/>
+	<meta name="author" content="{{ config['SITE_AUTHOR'] }}"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no"/>
 	{% endblock %}
 
   <base href="/as_dev/thumbnail/"/>
-	<link rel="shortcut icon" href="static/ico/favicon.ico">
+	<link rel="shortcut icon" href="static/ico/favicon.ico"/>
 	<!-- <link rel="apple-touch-icon-precomposed" sizes="114x114" href="./static/ico/apple-touch-icon-114-precomposed.png">
 	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="./static/ico/apple-touch-icon-72-precomposed.png">
 	<link rel="apple-touch-icon-precomposed" href="./static/ico/apple-touch-icon-57-precomposed.png"> -->
 	{% block css %}
-	<link rel="stylesheet" href="static/css/bootstrap.min.css">
+	<link rel="stylesheet" href="static/css/bootstrap.min.css"/>
 	<style>
 	body {
 	  padding-top: 60px;
 	  padding-bottom: 40px;
 	}
 	</style>
-	<link rel="stylesheet" href="static/css/bootstrap-responsive.min.css">
-	<link rel="stylesheet" href="static/extras/prettify/prettify.css" rel="stylesheet">
-	<link rel="stylesheet" href="static/extras/font-awesome/css/font-awesome.css" rel="stylesheet">
+	<link rel="stylesheet" href="static/css/bootstrap-responsive.min.css"/>
+	<link rel="stylesheet" href="static/extras/prettify/prettify.css"/>
+	<link rel="stylesheet" href="static/extras/font-awesome/css/font-awesome.css"/>
   <!-- Custom User Styles -->
-	<link rel="stylesheet" href="static/css/style.css">
+	<link rel="stylesheet" href="static/css/style.css"/>
 	{% endblock %}
 
 	<script src="static/js/libs/modernizr-2.5.3-respond-1.1.0.min.js"></script>
@@ -63,15 +63,15 @@
                 <li class="dropdown {{ active }}">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">API Docs <b class="caret"></b></a>
                   <ul class="dropdown-menu">
-                    <li><a name="getstarted" href="docs.html">Getting Started</a></li>
-                    <li><a name="request" href="docs.html#request">Basic Request</a></li>
-                    <li><a name="response" href="docs.html#response">Basic Response</a></li>
-                    <li><a name="security" href="docs.html#security">Security</a></li>
-                    <li><a name="errors" href="docs.html#error">Error Responses</a></li>
+                    <li><a href="docs.html">Getting Started</a></li>
+                    <li><a href="docs.html#request">Basic Request</a></li>
+                    <li><a href="docs.html#response">Basic Response</a></li>
+                    <li><a href="docs.html#security">Security</a></li>
+                    <li><a href="docs.html#error">Error Responses</a></li>
                     <li class="divider"></li>
                     <li class="nav-header">API</li>
-                    <li><a name="identify" href="docs.html#identify">Identify</a></li>
-                    <li><a name="convert" href="docs.html#convert">Convert</a></li>
+                    <li><a href="docs.html#identify">Identify</a></li>
+                    <li><a href="docs.html#convert">Convert</a></li>
                   </ul>
                 </li>
                 {%- endmacro %}
@@ -124,12 +124,7 @@
     <script>
     $(document).ready(function() {
     	/* Google Prettyprint */
-    	prettyPrint();
-
-      // bind 'myForm' and provide a simple callback function 
-      $('#myForm').ajaxForm(function() { 
-          alert("Thank you for your comment!"); 
-      }); 
+    	prettyPrint(); 
     });
     </script>
     <script src="static/js/plugins.js"></script>
