@@ -2,7 +2,7 @@
 
 export VPHAPP_ROOT='/var/vphapp'
 export VPHAPP_TMP=$VPHAPP_ROOT/tmp
-sudo mkdir -p $VPHAPP_ROOT/{logs,tmp} && cd $VPHAPP_ROOT
+sudo mkdir -p $VPHAPP_ROOT/{logs,tmp}; cd $VPHAPP_ROOT
 sudo chmod 766 $VPHAPP_ROOT/{logs,tmp}
 
 # Update package repositories
@@ -16,8 +16,8 @@ sudo apt-get install -y graphicsmagick
 # TODO: Use virtualenv
 
 # Clone application code from repository
-export VPHAPP_GIT='git://github.com/VPH-Share/transmogrifier.git'
-sudo git clone $VPHAPP_REPO app && cd app
+export VPHAPP_REPO='git://github.com/VPH-Share/transmogrifier.git'
+sudo git clone $VPHAPP_REPO app; cd app
 sudo pip install -r stable-req.txt
 
 # TODO: Add VPH-App user and create appropriate directories [SECURITY]

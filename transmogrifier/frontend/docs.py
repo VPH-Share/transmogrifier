@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, make_response
-docs = Blueprint('docs', __name__, static_folder='static', template_folder='templates')
+docs = Blueprint('docs', __name__, template_folder='templates')
 
 
 @docs.route('/')
@@ -14,7 +14,6 @@ def index():
     return render_template('docs.html')
 
 
-# TODO: Use SharedDataMiddleWare for static files. Too lazy to set it up
 @docs.route('/robots.txt')
 def robots():
     res = make_response(render_template('robots.txt'))

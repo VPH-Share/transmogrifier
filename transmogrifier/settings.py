@@ -15,6 +15,7 @@ class BaseConfig(object):
     # Un-comment if you want to run without gunicorn or gevent concurrency
     LISTEN_HOST = os.environ.get('HOST', '0.0.0.0')
     LISTEN_PORT = os.environ.get('PORT', 5000)
+    # SERVER_NAME = os.environ.get('SERVER_NAME', '')
     # If users want to pass specific werkzeug options
     WERKZEUG_OPTS = {'host': LISTEN_HOST, 'port': LISTEN_PORT}
 
@@ -23,7 +24,6 @@ class BaseConfig(object):
     # CANONICAL_NAME = '127.0.0.1'
     # CANONICAL_PORT = 8080
     CANONICAL_SERVER = 'http://vph.cyfronet.pl:8000/as_dev/thumbnail/'
-    SERVER_NAME = 'http://vph.cyfronet.pl:8000/as_dev/thumbnail/'
 
     SECRET_KEY = 'secret'
     MAX_CONTENT_LENGTH = 12 * 1024 * 1024  # 12Mb upload limit
@@ -65,5 +65,5 @@ class ProdConfig(DefaultConfig):
     MAIL_USE_TLS = True
     MAIL_USE_SSL = False
 
-    NGINX_REVERSE_PROXIED = True
-    USE_X_SENDFILE = True
+    NGINX_REVERSE_PROXIED = False
+    USE_X_SENDFILE = False

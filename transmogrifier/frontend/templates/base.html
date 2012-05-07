@@ -137,5 +137,24 @@
     //   load: ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js'
     // });
     </script> -->
+    <noscript>
+      <pre>
+                     {{ config['SITE_NAME'] }}
+                {{ ['SITE_DESCRIPTION'] }}
+
+                       ---
+
+Your browser appears to have Javascript disabled.
+
+This site uses Javascript for both presentational 
+and application performance. It does <i>not</i>
+however link to any sinister external scripts.
+
+To view the  website, please enable Javascript and 
+<a href="/">reload the page</a>.
+
+                       ---
+</pre>
+</noscript>
 </body>
 </html>

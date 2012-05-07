@@ -180,8 +180,9 @@ def process_params():
                                "more_info": "/#convert"}
                     return error_response(400, err_msg)
             elif k == 'thumbnail':
-                if len(v.split('x')) == 2:
-                    cmds.append(' -thumbnail %s ' % str(v))
+                splits = v.split('x')
+                if len(splits) == 2 and (splits[0].isdigit() and splits[1].isdigit()):
+                    cmds.append('-thumbnail %s' % str(v))
                 elif v == '':
                     del g.params[k]
                 else:

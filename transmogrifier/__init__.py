@@ -20,7 +20,7 @@ BLUEPRINTS = [api_error, docs, api_identify, api_convert]
 def create_app(name=SITE_NAME, config=DefaultConfig, blueprints=BLUEPRINTS):
     '''Application Factory that returns a pre-configured Flask app'''
 
-    app = Flask(name, static_url_path="/%(SITE_NAME)s/frontend/static")
+    app = Flask(name)
 
     # Load settings
     configure_app(app, config)
@@ -53,6 +53,11 @@ def configure_wsgi_apps(app):
     '''Load and initialise wsgi middleware fixers'''
     from werkzeug.contrib.fixers import ProxyFix
     app.wsgi_app = ProxyFix(app.wsgi_app)
+
+    from werkzeug import SharedDataMiddleware
+    app.wsgi_app = SharedDataMiddleware(app.wsgi_app, {
+      '/static': os.path.join(os.path.dirname(__file__), 'frontend', 'static')
+    }, cache_timeout=604800)
 
     from .helpers import MethodRewriteMiddleware
     app.wsgi_app = MethodRewriteMiddleware(app.wsgi_app)
