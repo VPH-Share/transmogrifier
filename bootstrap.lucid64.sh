@@ -17,7 +17,8 @@ sudo apt-get install -y graphicsmagick
 
 # Clone application code from repository
 export VPHAPP_REPO='git://github.com/VPH-Share/transmogrifier.git'
-sudo git clone $VPHAPP_REPO app; cd app
+sudo git clone $VPHAPP_REPO app
+cd app
 sudo pip install -r stable-req.txt
 
 # TODO: Add VPH-App user and create appropriate directories [SECURITY]
