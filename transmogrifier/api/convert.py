@@ -39,7 +39,6 @@ def get_convert():
                         return error_response(400, err_msg)
                     # Copy file to upload folder
                     ftmp = joinpath(current_app.config['UPLOAD_FOLDER'], secure_filename(os.path.basename(fsrc)))
-                    print fsrc, ftmp
                     shutil.copy2(fsrc, ftmp)
                     # Process file
                     res = process_file("%s %s" % (cmds, ftmp))
